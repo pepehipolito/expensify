@@ -1,0 +1,66 @@
+.babelrc:
+  babel is a transpiler, it converts modern JS down to ES5 so older browsers understand it.
+  presets:
+    Set of plugins used to support particular language features.
+    They are run in the reverse order they are listed.
+    On installation the presets are prefixed with 'babel-preset-' but the name in .babelrc does not include the prefix.
+    env:
+      Same as 'latest', (or es2015, es2016, and es2017 together)
+    react:
+      Adds support for JSX.
+  plugins:
+    Apply transformations to the code.
+    The run in the order they are listed.
+    On installation the presets are prefixed with 'babel-plugin-' but the name in .babelrc does not include the prefix.
+    transform-class-properties:
+      Avoids the need of having a constructor and variables can be defined as class variables.
+    transform-object-rest-spread:
+      Enables to use the spread operator on objects (...myObject).
+
+Object spreading:
+  An attribute of an object listed before the object is spread will not be modified, since the object
+  spread will override the attribute. In order to modify the object's attribute the modified value must
+  go after the object spread:
+    Incorrect:
+      myObjectAttribute: 'newValue', ...myObject
+    Correct:
+      ...myObject, myObjectAttribute: 'newValue'
+
+Inline default function exports:
+  Incorrect:
+    export default functionName = () => {}  // then
+    import functionName from 'myPath';
+  Correct:
+    export default () => {}                 // then
+    import myFunction from 'myPath';
+
+react-redux:
+  Enables to connect redux to react components.
+  Uses heavily "higher order components".
+
+jest:
+  Testing library
+  https://facebook.github.io/jest/docs/en/api.html
+  Testing in watch mode:
+    In package.json:
+      "scripts": {"test": "jest --watch"}
+    From command line:
+      npm [run] test -- --watch
+
+Testing components:
+  react-test-renderer:
+    Very simpler tester. Keeps a copy of the output through toMatchSnapshot() to be tested later against.
+    It is only useful for very simple components, like headers, etc.
+  enzyme:
+    Much more complex library than the above. It needs 2 additional libraries:
+      enzyme-adapter-react-16:
+        This tells to enzyme that we are using react 16.
+      raf:
+        Short for request animation frame. It's a polyfill for the browser so things don't break.
+    When working with the 'shallow' functionality, it stores a lot of "gunk" in the snapshots. In order to reduce the output it needs 'enzyme-to-json'.
+      enzyme-to-json: It reduces the output of the snapshot to what we need, without enzyme "gunk" in it.
+
+jest.config.json:
+  File used by react to do some setup that runs before the tests are executed.
+  The 'setupFiles' attribute admits an array of paths of files to be loaded before tests run.
+  It also needs a change to the script command in package.json so it knows where the config is.

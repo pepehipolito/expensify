@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders EditExpensePage correctly 1`] = `
+<div>
+  <ExpenseForm
+    action="Update"
+    onRemove={[Function]}
+    onSubmit={[Function]}
+  />
+</div>
+`;
