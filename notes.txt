@@ -64,3 +64,13 @@ jest.config.json:
   File used by react to do some setup that runs before the tests are executed.
   The 'setupFiles' attribute admits an array of paths of files to be loaded before tests run.
   It also needs a change to the script command in package.json so it knows where the config is.
+
+Heroku changes:
+  server/server.js:
+    Retrieve the port the app would run under, otherwise use 3000 for local server.
+  package.json scripts:
+    "start"
+      Tells Heroku how to start the server.
+    "heroku-postbuild"
+      Runs after Heroku install of the app's dependencies.
+      We'll run webpack in it.

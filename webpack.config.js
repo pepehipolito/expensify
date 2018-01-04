@@ -14,7 +14,7 @@ module.exports = (env) => {
     // because different systems have different ways of expressing paths (i.e.: Windows vs. Linux), and
     // the name of the file containin the result is bundle.js.
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
     },
 
@@ -71,9 +71,10 @@ module.exports = (env) => {
     // files are changed.
     devServer: {
       contentBase: path.join(__dirname, 'public'),  // Notice that this is the same as output.path above
-      historyApiFallback: true                      // This tells the dev server to always serve index.html
+      historyApiFallback: true,                     // This tells the dev server to always serve index.html
                                                     // for all 404s so the routing is done client side
                                                     // (requires server restart).
+      publicPath: '/dist/'
     }
   }
 };
