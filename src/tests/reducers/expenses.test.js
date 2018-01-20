@@ -1,4 +1,5 @@
 import reduceExpenses from '../../reducers/expenses';
+import expenses from '../fixtures/expenses';
 
 test('sets up default expense values', () => {
   const state = reduceExpenses(undefined, '@@INIT');
@@ -33,4 +34,9 @@ test('does not update any expenses if none found', () => {
   const expenses = [{id: 'foo', age: 25}, {id: 'bar', city: 'Oldsmar'}];
   const state = reduceExpenses(expenses, {type: 'EDIT_EXPENSE', id: 'baz', payload: {age: 52}});
   expect(state).toEqual(expenses);
+});
+
+test('sets expenses', () => {
+  const state = reduceExpenses(expenses, {type: 'SET_EXPENSES', expenses: [expenses[1]]})
+  expect(state).toEqual([expenses[1]]);
 });
