@@ -74,3 +74,18 @@ Heroku changes:
     "heroku-postbuild"
       Runs after Heroku install of the app's dependencies.
       We'll run webpack in it.
+
+cross-env:
+  npm module that enables the app to set and use environment variables in a cross platform way.
+  We're using this to setup NODE_ENV so we can use the test DB.
+
+dotenv:
+  npm module that reads a file with environment variables information.
+  Can be used to set environment variables directly from a file in the system.
+
+Heroku config variables:
+  Checking:
+    heroku config
+  Setting and unsetting:
+    heroku config:set KEY=value
+    heroku config:unset KEY
