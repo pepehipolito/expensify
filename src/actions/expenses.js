@@ -49,6 +49,14 @@ export const editExpense = (id, payload) => ({
   payload
 });
 
+export const startEditExpense = (id, payload) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).set(payload).then((res) => {
+      dispatch(editExpense(id, payload));
+    });
+  }
+};
+
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
   type: 'SET_EXPENSES',
@@ -62,8 +70,11 @@ export const startSetExpenses = () => {
       const expenses = [];
 
       snapshot.forEach(childSnapshot => {
+console.log('child:', childSnapshot)
+console.log('key:', childSnapshot.key)
+console.log('val:', childSnapshot.val())
         expenses.push({
-          id: parseInt(childSnapshot.key),
+          id: childSnapshot.key,
           ...childSnapshot.val()
         })
       });
