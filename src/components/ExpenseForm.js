@@ -6,7 +6,7 @@ export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
 
-    const { expense } = this.props;
+    const { expense } = props;
 
     this.state = {
       description:      expense ? expense.description : '',

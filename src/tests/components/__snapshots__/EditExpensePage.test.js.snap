@@ -4,6 +4,15 @@ exports[`renders EditExpensePage correctly 1`] = `
 <div>
   <ExpenseForm
     action="Update"
+    expense={
+      Object {
+        "amount": 4500,
+        "createdAt": 345600000,
+        "description": "Credit Card",
+        "id": 3,
+        "note": "",
+      }
+    }
     onRemove={[Function]}
     onSubmit={[Function]}
   />
