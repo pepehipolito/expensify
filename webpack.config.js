@@ -16,9 +16,9 @@ module.exports = (env) => {
   const CSSExtract    = new ExtractTextPlugin('styles.css');  // Used to extract [s]css into its own file.
 
   return {
+    // 'babel-polyfill' translates ES6 code to other versions for browsers that might not support it.
     // Our main entry point is in relative path './src/app.js'
-    // entry: './src/app.js',
-    entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'],
 
     // Our output must go to an absolute path, and we use join so JS creates the path correctly for us
     // because different systems have different ways of expressing paths (i.e.: Windows vs. Linux), and

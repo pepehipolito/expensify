@@ -1,10 +1,30 @@
+// The universal box-sizing border-box selector helps with calculations of final sizing. For example:
+// In _input.scss with have the following CSS:
+// .text-input {
+//   border: 1px solid $input-border;
+//   height: 50px;
+//   font-size: $font-size-large;
+//   font-weight: 300;
+//   padding: $s-size;
+// }
+// The default 'box-sizing' behavior is 'content-box', wich gives the input height a total of 76px:
+// 50px from height + 24px from padding ($s-size is 12) + 2px for border (top and bottom).
+// 'border-box' helps to get the total height to 50px by calculating the height of the content based
+// on the existing values for margin, border, and padding. In this case giving the content a height
+// of 24px.
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
+  color: $dark-grey;
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
+  line-height: 1.6;
 }
 
 button {
